@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      input, textarea {
+      -webkit-user-select : auto;
+      }
+    </style>
+    <title>Two.js: Blank Stage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- <link rel="image_src" href="../images/logo.gif" /> -->
+    <!-- <link rel="shortcut icon" type="image/gif" href="../images/favicon.gif"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-url/2.5.3/url.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/two.js/0.6.0/two.js"></script>
+  </head>
+  <body ng-app>
+    <div id="stage"></div>
+    <div ng-controller="Controls">
+      <div>
+        Test JSON Data: <input type="text" size="30" maxlength="20">
+      </div>
+    </div>
+
+    <div class="scripts">
+      <script>
+        // TODO: ここら辺のNodeの大きさはあとで議論する
+        var nodes = [];
+        var node_width = 130;
+        var node_height = 100;
+        var mouse = new Two.Vector();
+
+        var dummyData = [
+          {title: "Deep1", author: "kazuki", year: "1999"}, 
+          {title: "Moire Pattern", author: "yamada", year: "2000"}, 
+          {title: "Database method", author: "sakuma", year: "2001"}, 
+          {title: "Japanese food", author: "scott", year: "2002"}, 
+          {title: "Ramen method", author: "atom", year: "2003"}, 
+          {title: "Deploy or Die", author: "atom", year: "2015"}, 
+        ];
+
+        // TODO: Nodeは座標とどことリンクしているかさえあれば良いはずなので, 
+        // titleなどの具体的なものは含まない方がよい？
+        class PaperNode {
+          constructor(x, y, title, author, year) {
+            this.rect = new Two.Rectangle(x, y, node_width, node_height);
+            this.rect.fill = 'rgb(0, 0, 200)';
+            this.rect.opacity = 0.50;
+
+            this.x = x;
+            this.y = y;
+            // TODO: 20はマジックナンバー
+            this.title = new Two.Text("title: " + title, x, y-20, 'normal');
+            this.author = new Two.Text("author: " + author, x, y, 'normal');;
+            this.year = new Two.Text("year: " + year, x, y+20, 'normal');
+
+            this.allObjects = new Two.Group();
+            this.allObjects.add(this.rect, this.title, this.author, this.year);
+          }
+        }
+        // どこからどこのNodeにつながりがあるのか
+        class Edge {
+          constructor(to, from) {
+            this.to = to;
+            this.from = from;
+          }
+        }
+
+        // 描画するための全体ノードとエッジを持つ: 現状はつかわれていない
+        class Graph {
+          constructor(paperNode, edge) {
+            this.paperNode = paperNode;
+            this.edge = edge;
+            this.group = new Group();
+            // TODO: NodeとEdge情報を用いてLineで繋げる
+            this.group.add(this.paperNode.allObjects, this.line);
+          }
+        }
+
+        // Controllers
+        var Controls = function($scope) {
+          var type = /(canvas|webgl)/.test(url.type) ? url.type : 'svg';
+          var two = new Two({
+            type: Two.Types[type],
+            fullscreen: true,
+            autostart: true
+          })
+          .appendTo(document.querySelector('#stage'));
+
+          // Mainのグラフを作成する
+          var data = {}
+          var testJSONData = dummyData;
+          data.testJSONData = testJSONData;
+          paperGraph = createGraph();
+          $scope.data = data;
+          
+          // グラフを描画するためにtwoオブジェクトに追加する
+          _.each(_.range(testJSONData.length), function(i) {
+            two.add(paperGraph[i].allObjects);
+          });
+
+          // $scope.title = title;
+          // $scope.paperGraph = paperGraph;
+
+          function createGraph() {
+            _.each(_.range(testJSONData.length), function(i) {
+              // TODO: 150というマジックナンバーがある
+              node = new PaperNode(node_width + 150*i, two.height/2, testJSONData[i].title, testJSONData[i].author, testJSONData[i].year);
+              nodes.push(node);
+            });
+
+            return nodes;
+          }
+        }
+
+        // var $window = $(window)
+        //   .bind('mousemove', function(e) {
+        //     mouse.x = e.clientX;
+        //     mouse.y = e.clientY;
+        //     mouseOverOnCard(mouse.x, mouse.y, cards);
+        //   });
+
+        // マウスオーバーの位置にカードはあるのか?
+        function mouseOverOnCard(mouse_x, mouse_y, cards) {
+          _.each(cards, function(card) {
+          });
+        }
+
+      </script>
+    </div>
+  </body>
+</html>
