@@ -1,3 +1,3 @@
-# Survey Graph Project
+# Backend development branch
 
-## プロトタイプの実装について
+別のrepoに分けるべきだったのかも笑
