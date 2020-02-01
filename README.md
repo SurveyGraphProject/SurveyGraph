@@ -1,3 +1,4 @@
 # Backend development branch
 
-別のrepoに分けるべきだったのかも笑
+API will be developed from:
+https://sgt-backend-demo.herokuapp.com/
