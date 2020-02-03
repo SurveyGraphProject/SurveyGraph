@@ -1,4 +1,4 @@
-acasearch==0.1
+git+https://github.com/AtomScott/scholar-api.git
 arxiv==0.5.1
 asgiref==3.2.3
 certifi==2019.11.28
