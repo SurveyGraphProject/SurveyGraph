@@ -1,3 +1,4 @@
 backenv
 .secrets
 .vscode
+secret*

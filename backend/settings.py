@@ -23,7 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # Sorry this is an old secret key.
 # SECRET_KEY = '8zwxj-agn1&(8d^ghn9i!^4uay3^^b&$zp_r12*b*07r#s#j7k'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', False)
+if not SECRET_KEY:
+    import secret # for local 
+    SECRET_KEY = secret.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'backend.api_dev'
 ]
 
 MIDDLEWARE = [
