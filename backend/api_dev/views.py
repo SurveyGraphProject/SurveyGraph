@@ -22,4 +22,4 @@ def index(request):
     if not prophy_id:
         return HttpResponse('Paper not found')
 
-    return HttpResponse(acasearch.get_citation_tree(prophy_id), depth=3)
+    return HttpResponse(acasearch.get_citation_tree(prophy_id), depth=1, width=3)
