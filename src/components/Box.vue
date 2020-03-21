@@ -1,27 +1,24 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <Box msg="Sample Article"/>
-  </div>
+    <div class="box">
+        <p>{{ msg }}</p>
+    </div>
 </template>
 
 <script lang="ts">
-import Box from '@/components/Box.vue'
 import { Component, Prop, Vue } from 'vue-property-decorator';
-@Component({
-  components: {
-    Box
-  }
-})
-export default class Hello extends Vue {
+@Component
+export default class Box extends Vue {
   @Prop() private msg!: string;
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+.box{
+    border:1px solid black;
+    width:100px;
+    height:100px;
+    text-align: center;
 }
 ul {
   list-style-type: none;
