@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
-export default class Box extends Vue {
+export default class ArticleBox extends Vue {
   @Prop() private title!: string;
 }
 </script>

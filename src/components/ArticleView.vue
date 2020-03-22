@@ -1,17 +1,17 @@
 <template>
   <div class="articles">
     <label v-for="article in articles" :key=article.title>
-      <Box :title="article.title"/>
+      <ArticleBox :title="article.title"/>
     </label>
   </div>
 </template>
 
 <script lang="ts">
-import Box from '@/components/Box.vue'
+import ArticleBox from '@/components/ArticleBox.vue'
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component({
   components: {
-    Box
+    ArticleBox
   }
 
 })
