@@ -1,7 +1,7 @@
 <template>
   <div class="articles">
-    <label v-for="article in articles" :key=article.title>
-      <ArticleBox :title="article.title"/>
+    <label v-for="article in articles" :key=article>
+      <ArticleBox :article="article"/>
     </label>
   </div>
 </template>
@@ -17,7 +17,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 })
 export default class articles extends Vue {
   articles=[
-    {title:"Sample Article"}, {title:"Sample Article2"}, {title:"Sample Article3"}
+    {title:"Sample Article", author:"yamada"}, {title:"Sample Article2", author:"atom"}, {title:"Sample Article3", author:"sakuma"}
   ];
 }
 </script>

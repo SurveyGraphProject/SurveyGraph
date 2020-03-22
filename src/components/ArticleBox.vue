@@ -1,6 +1,9 @@
 <template>
     <div class="box">
-        <p>{{ title }}</p>
+        <p>{{ article.title }}</p>
+        <i class="author">
+          {{ article.author }}
+        </i>
     </div>
 </template>
 
@@ -8,7 +11,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class ArticleBox extends Vue {
-  @Prop() private title!: string;
+  @Prop() private article!: Enumerator;
 }
 </script>
 
