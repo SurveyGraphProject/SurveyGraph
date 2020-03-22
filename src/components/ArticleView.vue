@@ -1,6 +1,6 @@
 <template>
   <div class="articles">
-    <label v-for="article in articles" :key=article>
+    <label v-for="article in ref" :key=article>
       <ArticleBox :article="article"/>
     </label>
   </div>
@@ -16,9 +16,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 })
 export default class articles extends Vue {
-  articles=[
-    {title:"Sample Article", author:"yamada"}, {title:"Sample Article2", author:"atom"}, {title:"Sample Article3", author:"sakuma"}
+  ref=[
+    {title:"Sample Ref1", author:"yamada", year:2018}, {title:"Sample Ref2", author:"atom", year:2019}, {title:"Sample Ref3", author:"sakuma", year:2020}
   ];
+
 }
 </script>
 
