@@ -1,8 +1,8 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <Box title="Sample Article"/>
-    <Box title="Sample Article2"/>
+  <div class="articles">
+    <label v-for="article in articles" :key=article.title>
+      <Box :title="article.title"/>
+    </label>
   </div>
 </template>
 
@@ -13,9 +13,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
   components: {
     Box
   }
+
 })
-export default class Hello extends Vue {
-  @Prop() private msg!: string;
+export default class articles extends Vue {
+  articles=[
+    {title:"Sample Article"}, {title:"Sample Article2"}, {title:"Sample Article3"}
+  ];
 }
 </script>
 

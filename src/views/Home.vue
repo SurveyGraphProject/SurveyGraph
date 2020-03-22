@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <img alt="title-logo" src="../assets/title.png" width="200" height="200">
-    <Sample msg="Graphical Survey"/>
+    <h1>Graphical Survey</h1>
+    <Sample/>
   </div>
 </template>
 
