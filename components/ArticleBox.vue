@@ -7,16 +7,25 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-@Component
-export default class ArticleBox extends Vue {
-  @Prop() private article!: Enumerator;
+<script>
+export default {
+    props: {
+        article: {
+            type: Object,
+            required: true
+        }
+    },
+    data(){
+        return {
+            count: 0
+        };
+    },
+    methods: {
+    },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style scoped>
 .box{
     display: inline-block;
     border:1px solid black;

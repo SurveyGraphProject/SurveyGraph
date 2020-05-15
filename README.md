@@ -1,34 +1,22 @@
-# survey-graph
+# proj-cojt
 
-## Project setup
-```
-yarn install
-```
+> My flawless Nuxt.js project
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Build Setup
 
-### Compiles and minifies for production
-```
-yarn build
-```
+```bash
+# install dependencies
+$ yarn install
 
-### Run your unit tests
-```
-yarn test:unit
-```
+# serve with hot reload at localhost:3000
+$ yarn dev
 
-### Run your end-to-end tests
-```
-yarn test:e2e
+# build for production and launch server
+$ yarn build
+$ yarn start
+
+# generate static project
+$ yarn generate
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
